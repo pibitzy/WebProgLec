@@ -48,10 +48,10 @@ if (isset($_POST['register'])) {
             header("Location: login.php");
             exit();
         } else {
-            echo "Terjadi kesalahan saat registrasi: " . $conn->error;
+            echo "Error when registering: " . $conn->error;
         }
     } else {
-        echo "reCAPTCHA verification failed.";
+        echo "reCAPTCHA verification failed!";
     }
 }
 ?>
@@ -59,40 +59,59 @@ if (isset($_POST['register'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registrasi</title>
+    <title>Registration</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-    <h2>Registrasi</h2>
-    <form method="post" action="register.php">
-        <label for="fname">Nama Depan:</label>
-        <input type="text" name="fname" required><br>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="text-center">Registration</h2>
+                <form method="post" action="register.php">
+                    <div class="form-group">
+                        <label for="fname">First Name:</label>
+                        <input type="text" name="fname" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name:</label>
+                        <input type="text" name="lname" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bday">Birthday Date:</label>
+                        <input type="date" name="bday" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="jeniskelamin">Gender:</label>
+                        <select name="jeniskelamin" class="form-control" required>
+                            <option value="Laki-laki">Male</option>
+                            <option value="Perempuan">Female</option>
+                            <option value="Lainnya">Prefer not to say</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="g-recaptcha mt-2 mb-2" data-sitekey="6LcLpMEoAAAAAG-lNbBqFlEsobG_NRMOyq4-Kqhf"></div>
+                    </div>
+                    <button type="submit" name="register" class="btn btn-primary">Register</button>
+                </form>
+                <p class="mt-3">Already have account? <a href="login.php">Login here.</a></p>
+            </div>
+        </div>
+    </div>
 
-        <label for="lname">Nama Belakang:</label>
-        <input type="text" name="lname" required><br>
-
-        <label for="username">Username:</label>
-        <input type="text" name="username" required><br>
-
-        <label for="email">Email:</label>
-        <input type="email" name="email" required><br>
-
-        <label for="password">Password:</label>
-        <input type="password" name="password" required><br>
-
-        <label for="bday">Tanggal Lahir:</label>
-        <input type="date" name="bday" required><br>
-
-        <label for="jeniskelamin">Jenis Kelamin:</label>
-        <select name="jeniskelamin" required>
-            <option value="Laki-laki">Laki-laki</option>
-            <option value="Perempuan">Perempuan</option>
-            <option value="Lainnya">Lainnya</option>
-        </select><br>
-
-        <div class="g-recaptcha" data-sitekey="6LcLpMEoAAAAAG-lNbBqFlEsobG_NRMOyq4-Kqhf"></div>
-
-        <button type="submit" name="register">Register</button>
-    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
+

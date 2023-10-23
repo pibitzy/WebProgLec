@@ -49,13 +49,13 @@ if (isset($_POST['login'])) {
                 }
                 exit();
             } else {
-                echo "Kata sandi salah.";
+                echo "Wrong password!";
             }
         } else {
-            echo "User tidak ditemukan.";
+            echo "User undefined!";
         }
     } else {
-        echo "reCAPTCHA verification failed.";
+        echo "reCAPTCHA verification failed!";
     }
 }
 ?>
@@ -65,19 +65,33 @@ if (isset($_POST['login'])) {
 <head>
     <title>Login</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-    <h2>Login</h2>
-    <form method="post" action="login.php">
-        <label for="username">Username:</label>
-        <input type="text" name="username" required><br>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="text-center">Login</h2>
+                <form method="post" action="login.php">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="g-recaptcha mt-2 mb-2" data-sitekey="6LcLpMEoAAAAAG-lNbBqFlEsobG_NRMOyq4-Kqhf"></div>
+                    </div>
+                    <button type="submit" name="login" class="btn btn-primary">Login</button>
+                </form>
+                <p class="mt-3">Don't have an account? <a href="register.php">Register here.</a></p>
+            </div>
+        </div>
+    </div>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" required><br>
-
-        <div class="g-recaptcha" data-sitekey="6LcLpMEoAAAAAG-lNbBqFlEsobG_NRMOyq4-Kqhf"></div>
-
-        <button type="submit" name="login">Login</button>
-    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
+
